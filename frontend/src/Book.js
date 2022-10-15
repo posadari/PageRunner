@@ -1,7 +1,7 @@
 import React from 'react'
 import HTMLFlipBook from 'react-pageflip';
 import './book.css';
-
+import WebGazer from './WebGazer';
 
 const Book = () => {
     const bookRef = React.useRef()
@@ -37,8 +37,8 @@ const Book = () => {
     // }
 
     return (
-
         <>
+        <WebGazer />
         <div onClick={() => {
             bookRef.current.pageFlip().flipNext();
         }}>
@@ -50,7 +50,7 @@ const Book = () => {
             <Page text="2" />
 
         </HTMLFlipBook> */}
-        <HTMLFlipBook width={400} height={500} ref={bookRef}>
+        <HTMLFlipBook style={{float: 'right'}} width={400} height={500} ref={bookRef}>
             <Page number="1">Page text</Page>
             <Page number="2">Page text</Page>
             <Page number="3">Page text</Page>
