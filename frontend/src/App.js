@@ -5,7 +5,10 @@ import Book from './Book';
 
 function App() {
   return (
+    <>
       <Book />
+      {/* <WebGazer /> */}
+    </>
   );
 }
 

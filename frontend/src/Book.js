@@ -1,5 +1,7 @@
 import React from 'react'
 import HTMLFlipBook from 'react-pageflip';
+import './book.css';
+
 
 const Book = () => {
     const bookRef = React.useRef()
@@ -7,11 +9,12 @@ const Book = () => {
     const Page = React.forwardRef((props, ref) => {
         return (
             <div ref={ref}
-                style={{backgroundImage: `url(${process.env.PUBLIC_URL + '/paperboard-yellow-texture.jpg'})`,}}
-            >
+                className="page"
+                >
                 <h1>Page Header</h1>
                 <p>{props.children}</p>
                 <p>Page number: {props.number}</p>
+
             </div>
         );
     });
@@ -37,7 +40,7 @@ const Book = () => {
 
         <>
         <div onClick={() => {
-            bookRef.current.pageFlip()
+            bookRef.current.pageFlip().flipNext();
         }}>
             Turn page
         </div>
@@ -47,11 +50,12 @@ const Book = () => {
             <Page text="2" />
 
         </HTMLFlipBook> */}
-                <HTMLFlipBook width={300} height={500}>
+        <HTMLFlipBook width={400} height={500} ref={bookRef}>
             <Page number="1">Page text</Page>
             <Page number="2">Page text</Page>
             <Page number="3">Page text</Page>
             <Page number="4">Page text</Page>
+            
         </HTMLFlipBook>
         </>
 
