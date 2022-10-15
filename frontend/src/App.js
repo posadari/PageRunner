@@ -1,5 +1,7 @@
 import logo from './logo.svg';
 import './App.css';
+import WebGazer from './WebGazer';
+import Book from './Book';
 
 function App() {
   return (
@@ -18,6 +20,7 @@ function App() {
           Learn React
         </a>
       </header>
+      <Book />
     </div>
   );
 }
