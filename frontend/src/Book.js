@@ -1,7 +1,13 @@
 import React from 'react'
 import HTMLFlipBook from 'react-pageflip';
 import './book.css';
+import { pdfjs, Document, Page as ReactPdfPage } from "react-pdf";
+import frogPrincePDF from "./frogprince.pdf";
 
+pdfjs.GlobalWorkerOptions.workerSrc = `//cdnjs.cloudflare.com/ajax/libs/pdf.js/${pdfjs.version}/pdf.worker.js`;
+
+
+const width = 400;
 
 const Book = () => {
     const bookRef = React.useRef()
@@ -11,30 +17,10 @@ const Book = () => {
             <div ref={ref}
                 className="page"
                 >
-                <h1>Page Header</h1>
-                <p>{props.children}</p>
-                <p>Page number: {props.number}</p>
-
+                <ReactPdfPage pageNumber={props.number} width={width} />
             </div>
         );
     });
-
-    // const Page = ({text}) => {
-    //     return (
-    //         <HTMLFlipBook width={300} height={500}>
-
-    //         <div style={{ 
-    //             backgroundImage: `url(${process.env.PUBLIC_URL + '/paperboard-yellow-texture.jpg'})`,
-    //             backgroundSize: 'cover',
-    //             width: '100%',
-    //             height: '100%'
-    //             }}>
-    //                 {text}
-    //         </div>
-    //         </HTMLFlipBook>
-
-    //     )
-    // }
 
     return (
 
@@ -44,19 +30,15 @@ const Book = () => {
         }}>
             Turn page
         </div>
-        {/* <HTMLFlipBook ref={bookRef} orientation="horizontal" style={{width: 1900, height: 1000}}>
-            <Page text="hyeee" />
-            <Page text="1sdgasgasdgsadgasgduiahsd;goihas;dogihas;dogiha;sodiasdgsadgasg" />
-            <Page text="2" />
-
-        </HTMLFlipBook> */}
-        <HTMLFlipBook width={400} height={500} ref={bookRef}>
-            <Page number="1">Page text</Page>
-            <Page number="2">Page text</Page>
-            <Page number="3">Page text</Page>
-            <Page number="4">Page text</Page>
-            
-        </HTMLFlipBook>
+        <Document file={frogPrincePDF}>
+            <HTMLFlipBook width={width} height={525} ref={bookRef}>
+                <Page number={1}>Page text</Page>
+                <Page number={2}>Page text</Page>
+                <Page number={3}>Page text</Page>
+                <Page number={4}>Page text</Page>
+                
+            </HTMLFlipBook>
+        </Document>
         </>
 
     )
