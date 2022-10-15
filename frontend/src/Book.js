@@ -2,8 +2,17 @@ import React from 'react'
 import FlipPage from 'react-flip-page'
 
 const Book = () => {
+    const bookRef = React.useRef()
+
     return (
-        <FlipPage>
+
+        <>
+        <div onClick={() => {
+            bookRef.current.gotoNextPage()
+        }}>
+            Turn page
+        </div>
+        <FlipPage ref={bookRef}>
             <article>
                 <h1>My awesome first article</h1>
                 <p>My awesome first content</p>
@@ -17,6 +26,8 @@ const Book = () => {
                 <p>My excellent third content</p>
             </article>
         </FlipPage>
+        </>
+
     )
 }
 
