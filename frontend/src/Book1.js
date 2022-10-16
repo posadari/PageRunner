@@ -102,6 +102,7 @@ const Book2 = () => {
                     </HTMLFlipBook>
                 </Document>
             </div>
+            <div className='cornerbook'></div>
         </>
 }
 
