@@ -1,5 +1,9 @@
 {
   "dependencies": {
+    "@emotion/react": "^11.10.4",
+    "@emotion/styled": "^11.10.4",
+    "@mui/material": "^5.10.9",
+    "@mui/styled-engine": "^5.10.8",
     "react-helmet": "^6.1.0",
     "webgazer": "^3.0.0"
   }
