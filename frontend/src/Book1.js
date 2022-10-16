@@ -4,6 +4,7 @@ import './book.css';
 import { pdfjs, Document, Page as ReactPdfPage } from "react-pdf";
 import monkeypaw from "./monkeyspaw.pdf";
 import Calibration from './Calibration'
+import frogPrincePDF from "./frogprince.pdf";
 
 pdfjs.GlobalWorkerOptions.workerSrc = `//cdnjs.cloudflare.com/ajax/libs/pdf.js/${pdfjs.version}/pdf.worker.js`;
 
@@ -13,9 +14,13 @@ const width = 400;
 const Book2 = () => {
     const bookRef = React.useRef()
     const [toggle, setToggle] = useState(true)
+    const [bookSwap, setBookSwap] = useState(true);
 
     const leftCutoff = 350;
     const rightCutoff = 1200;
+
+    const leftmostCutoff = 350;
+    const bottomCutoff = 350;
 
     let lookDirection = null;
     let startLookTime = Number.POSITIVE_INFINITY;
@@ -30,25 +35,30 @@ const Book2 = () => {
         var xprediction = data.x; //these x coordinates are relative to the viewport
         // element.current = document.elementFromPoint(xprediction, yprediction)
         if(xprediction < leftCutoff){
-            startLookTime = elapsedTime;
-            lookDirection = 'LEFT'
+            if(xprediction < leftmostCutoff && data.y > bottomCutoff){
+                console.log('in bottom')
+                startLookTime = elapsedTime;
+                lookDirection = 'BOTTOM'
+            } else {
+
+                startLookTime = elapsedTime;
+                lookDirection = 'LEFT'
+            }
         } else if(xprediction > rightCutoff){
             startLookTime = elapsedTime;
             lookDirection = 'RIGHT'
         }
 
-        console.log(xprediction)
+        console.log(data.y)
 
         if(startLookTime < elapsedTime && bookRef.current != null) {
-            console.log('in here')
             if(lookDirection === 'LEFT'){
-                console.log(xprediction)
-                console.log("turn right")
                 bookRef.current.pageFlip().flipPrev();
-            } else {
-                console.log(xprediction)
-                console.log("turn left")
+            } else if(lookDirection === 'RIGHT') {
                 bookRef.current.pageFlip().flipNext();
+            } else {
+                console.log('bottom')
+                setBookSwap(!bookSwap)
             }
             lookDirection = null;
             startLookTime = Number.POSITIVE_INFINITY
@@ -60,7 +70,7 @@ const Book2 = () => {
     if(toggle){
         webgazer.showVideoPreview(true).showPredictionPoints(true)
     } else {
-        webgazer.showVideoPreview(true).showPredictionPoints(false)
+        webgazer.showVideoPreview(true).showPredictionPoints(true)
     }
 
     const Page = React.forwardRef((props, ref) => {
@@ -76,7 +86,7 @@ const Book2 = () => {
     return (
         <>
         {toggle ? <Calibration /> : 
-        <>
+        <div className='everything'>
             <div className='desk'/>
             <img className='coffee' src="https://cdn.discordapp.com/attachments/708879033194119250/1031079877295734814/coffee-12663.png" />
             <div id="turner" className='leftButton' ></div>
@@ -88,6 +98,10 @@ const Book2 = () => {
                 }}>
                     Turn page
                 </div> */}
+
+
+                {
+                    bookSwap ? 
                 <Document file={monkeypaw}>
                     <HTMLFlipBook width={width} height={560} ref={bookRef} showCover={true}>
                         <Page number={1}>Page text</Page>
@@ -101,12 +115,25 @@ const Book2 = () => {
                         <Page number={9}>Page text</Page>
                     </HTMLFlipBook>
                 </Document>
+            :
+                <Document file={frogPrincePDF}>
+                    <HTMLFlipBook width={width} height={525} ref={bookRef}>
+                        <Page number={1}>Page text</Page>
+                        <Page number={2}>Page text</Page>
+                        <Page number={3}>Page text</Page>
+                        <Page number={4}>Page text</Page>
+                        
+                    </HTMLFlipBook>
+                </Document>
+            }
             </div>
-        </>
+            <div className='cornerbook' onClick={() => {setBookSwap(!bookSwap)}}></div>
+        </div>
+
+
 }
 
     <button className='calibrater' onClick={() => {setToggle(!toggle)}}>Calibrate</button>
-
 
         </>
 
