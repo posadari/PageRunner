@@ -3,6 +3,7 @@ import HTMLFlipBook from 'react-pageflip';
 import './book.css';
 import { pdfjs, Document, Page as ReactPdfPage } from "react-pdf";
 import frogPrincePDF from "./frogprince.pdf";
+import WebGazer from './WebGazer';
 
 pdfjs.GlobalWorkerOptions.workerSrc = `//cdnjs.cloudflare.com/ajax/libs/pdf.js/${pdfjs.version}/pdf.worker.js`;
 
@@ -23,8 +24,8 @@ const Book = () => {
     });
 
     return (
-
         <>
+        <WebGazer />
         <div onClick={() => {
             bookRef.current.pageFlip().flipNext();
         }}>

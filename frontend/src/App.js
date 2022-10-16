@@ -3,12 +3,14 @@ import './App.css';
 import WebGazer from './WebGazer';
 import Book from './Book';
 import Read from './ReadFile.js'
+import Click from './Calibration';
 
 function App() {
   console.log('here')
   return (
     <>
-      <Book />
+    <Click/>
+      {/* <Book /> */}
       {/* <WebGazer /> */}
       {/* <Read /> */}
     </>
