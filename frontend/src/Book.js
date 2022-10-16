@@ -9,13 +9,14 @@ pdfjs.GlobalWorkerOptions.workerSrc = `//cdnjs.cloudflare.com/ajax/libs/pdf.js/$
 
 
 const width = 400;
+const look_up = 3000;
 
 const Book = () => {
     const bookRef = React.useRef()
     const [toggle, setToggle] = useState(true)
 
-    const leftCutoff = 350;
-    const rightCutoff = 1200;
+    const leftCutoff = 270;
+    const rightCutoff = 1420;
 
     let lookDirection = null;
     let startLookTime = Number.POSITIVE_INFINITY;
@@ -39,7 +40,7 @@ const Book = () => {
 
         console.log(xprediction)
 
-        if(startLookTime < elapsedTime && bookRef.current != null) {
+        if(startLookTime < elapsedTime + look_up && bookRef.current != null) {
             console.log('in here')
             if(lookDirection === 'LEFT'){
                 console.log(xprediction)
@@ -60,7 +61,7 @@ const Book = () => {
     if(toggle){
         webgazer.showVideoPreview(true).showPredictionPoints(true)
     } else {
-        webgazer.showVideoPreview(true).showPredictionPoints(false)
+        webgazer.showVideoPreview(true).showPredictionPoints(true)
     }
 
 
