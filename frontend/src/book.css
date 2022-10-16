@@ -4,3 +4,25 @@
     padding: 10px;
     background-image: url("https://i.pinimg.com/originals/6e/55/7c/6e557c22d0a2840b0f7ca5213f56da0d.jpg");
 }
+
+.leftButton {
+    height: 100vh;
+    width: 50px;
+    bottom: 0;
+    right: 0;
+    z-index: 100;
+    background-color: royalblue;
+    position: absolute;
+    opacity: 20%;
+}
+
+.rightButton {
+    height: 100vh;
+    width: 400px;
+    bottom: 0;
+    left: 0;
+    z-index: 100;
+    background-color: royalblue;
+    position: absolute;
+    opacity: 20%;
+}

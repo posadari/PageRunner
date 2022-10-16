@@ -8,14 +8,14 @@ import {useState} from 'react';
 
 function App() {
   console.log('here')
-  const [toggle, setToggle] = useState(true);
+  // const [toggle, setToggle] = useState(true);
   return (
     <>
-      {toggle ? <Click /> : <Book />}
+      {/* {toggle ? <Click /> : <Book />} */}
     
-    <button onClick={() => {setToggle(!toggle)}}>Calibrate</button>
+    {/* <button onClick={() => {setToggle(!toggle)}}>Calibrate</button> */}
     {/* <Click/> */}
-      {/* <Book /> */}
+      <Book />
       {/* <WebGazer /> */}
       {/* <Read /> */}
     </>
