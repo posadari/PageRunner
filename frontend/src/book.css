@@ -71,3 +71,25 @@
     transform: translateX(30%) translateY(43%);
     height: 350px;
   }
+
+  .cornerbook {
+    /* max-width: 95%; */
+    /* color: rgb(236, 26, 26); */
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    padding: 10px;
+    background-image: url("https://i.pinimg.com/originals/51/14/cc/5114cca42866b6066cc1c7de799a5f6b.jpg");
+    background-size: cover;
+    height: 400px;
+    width: 525px;
+    box-shadow: 5px 5px 20px 3px black;
+    border-radius: 10px;
+    transform: translateX(-37%) translateY(43%);
+}
+
+.everything {
+    height: 100%;
+    width: 100%;
+    overflow-y: hidden;
+}
