@@ -9,6 +9,7 @@ pdfjs.GlobalWorkerOptions.workerSrc = `//cdnjs.cloudflare.com/ajax/libs/pdf.js/$
 
 
 const width = 400;
+const LOOK_TIME = 1000;
 
 const Book2 = () => {
     const bookRef = React.useRef()
@@ -39,7 +40,7 @@ const Book2 = () => {
 
         console.log(xprediction)
 
-        if(startLookTime < elapsedTime && bookRef.current != null) {
+        if(startLookTime + LOOK_TIME < elapsedTime && bookRef.current != null) {
             console.log('in here')
             if(lookDirection === 'LEFT'){
                 console.log(xprediction)
