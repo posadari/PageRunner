@@ -63,7 +63,6 @@ const Book2 = () => {
         webgazer.showVideoPreview(true).showPredictionPoints(false)
     }
 
-
     const Page = React.forwardRef((props, ref) => {
         return (
             <div ref={ref}
@@ -79,6 +78,7 @@ const Book2 = () => {
         {toggle ? <Calibration /> : 
         <>
             <div className='desk'/>
+            <img className='coffee' src="https://cdn.discordapp.com/attachments/708879033194119250/1031079877295734814/coffee-12663.png" />
             <div id="turner" className='leftButton' ></div>
             <div id="turner" className='rightButton' ></div>
             <div id="covertwo" style={{marginLeft: '30%'}}>
@@ -105,7 +105,8 @@ const Book2 = () => {
         </>
 }
 
-    <button onClick={() => {setToggle(!toggle)}}>Calibrate</button>
+    <button className='calibrater' onClick={() => {setToggle(!toggle)}}>Calibrate</button>
+
 
         </>
 

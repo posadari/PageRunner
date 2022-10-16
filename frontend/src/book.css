@@ -49,3 +49,25 @@
     box-shadow: 5px 5px 20px 3px black;
     border-radius: 10px;
   }
+
+  .calibrater {
+    background-color: #B2AC88;
+    margin: 20px;
+    padding: 20px;
+    padding-left: 30px;
+    padding-right: 30px;
+    border-radius: 15px;
+    outline: none; 
+    border: none;
+    position: absolute;
+    top: 32%;
+    left: 1%;
+  }
+
+  .coffee {
+    position: absolute;
+    right: 0;
+    bottom: 0;
+    transform: translateX(30%) translateY(43%);
+    height: 350px;
+  }

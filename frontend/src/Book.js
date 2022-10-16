@@ -101,7 +101,7 @@ const Book = () => {
         </>
 }
 
-    <button onClick={() => {setToggle(!toggle)}}>Calibrate</button>
+    <div onClick={() => {setToggle(!toggle)}}>Calibrate</div>
 
         </>
 
