@@ -79,6 +79,7 @@ const Book = () => {
         {toggle ? <Calibration /> : 
         <>
             <div className='desk'/>
+            <img className='coffee' src="https://cdn.discordapp.com/attachments/708879033194119250/1031079877295734814/coffee-12663.png" />
             <div id="turner" className='leftButton' ></div>
             <div id="turner" className='rightButton' ></div>
             <div id="cover" style={{marginLeft: '30%'}}>
@@ -98,10 +99,11 @@ const Book = () => {
                     </HTMLFlipBook>
                 </Document>
             </div>
+            <div className='cornerbook'></div>
         </>
 }
 
-    <div onClick={() => {setToggle(!toggle)}}>Calibrate</div>
+<button className='calibrater' onClick={() => {setToggle(!toggle)}}>Calibrate</button>
 
         </>
 

@@ -16,7 +16,7 @@ function App() {
     
     {/* <button onClick={() => {setToggle(!toggle)}}>Calibrate</button> */}
     {/* <Click/> */}
-      <Book1 />
+      <Book />
       {/* <WebGazer /> */}
       {/* <Read /> */}
     </>
