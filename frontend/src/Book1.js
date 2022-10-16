@@ -5,6 +5,7 @@ import { pdfjs, Document, Page as ReactPdfPage } from "react-pdf";
 import monkeypaw from "./monkeyspaw.pdf";
 import Calibration from './Calibration'
 import frogPrincePDF from "./frogprince.pdf";
+import { CircularProgress } from '@mui/material';
 
 pdfjs.GlobalWorkerOptions.workerSrc = `//cdnjs.cloudflare.com/ajax/libs/pdf.js/${pdfjs.version}/pdf.worker.js`;
 
@@ -12,7 +13,9 @@ pdfjs.GlobalWorkerOptions.workerSrc = `//cdnjs.cloudflare.com/ajax/libs/pdf.js/$
 const width = 400;
 
 const Book2 = () => {
-    const bookRef = React.useRef()
+    const bookRef1 = React.useRef()
+    const bookRef2 = React.useRef()
+    const bookisSwapped = React.useRef(true)
     const [toggle, setToggle] = useState(true)
     const [bookSwap, setBookSwap] = useState(true);
 
@@ -25,9 +28,8 @@ const Book2 = () => {
     let lookDirection = null;
     let startLookTime = Number.POSITIVE_INFINITY;
 
-
     const webgazer = window.webgazer;
-
+    console.log(webgazer);
     webgazer.setGazeListener(function(data, elapsedTime) {
         if (data == null) {
             return;
@@ -51,7 +53,9 @@ const Book2 = () => {
 
         console.log(data.y)
 
-        if(startLookTime < elapsedTime && bookRef.current != null) {
+        const bookRef = bookisSwapped ? bookRef2 : bookRef1;
+
+        if(startLookTime + 1000 < elapsedTime && bookRef.current != null) {
             if(lookDirection === 'LEFT'){
                 bookRef.current.pageFlip().flipPrev();
             } else if(lookDirection === 'RIGHT') {
@@ -59,6 +63,8 @@ const Book2 = () => {
             } else {
                 console.log('bottom')
                 setBookSwap(!bookSwap)
+                bookisSwapped.current = !bookisSwapped;
+                webgazer.pause()
             }
             lookDirection = null;
             startLookTime = Number.POSITIVE_INFINITY
@@ -101,9 +107,10 @@ const Book2 = () => {
 
 
                 {
-                    bookSwap ? 
-                <Document file={monkeypaw}>
-                    <HTMLFlipBook width={width} height={560} ref={bookRef} showCover={true}>
+                    <>
+                <div style={{opacity: bookSwap ? 1 : 0}}>
+                <Document file={monkeypaw} loading={<CircularProgress />} onloadeddata={()=> {webgazer.resume()}}>
+                    <HTMLFlipBook width={width} height={560} ref={bookRef1} showCover={true}>
                         <Page number={1}>Page text</Page>
                         <Page number={2}>Page text</Page>
                         <Page number={3}>Page text</Page>
@@ -115,9 +122,11 @@ const Book2 = () => {
                         <Page number={9}>Page text</Page>
                     </HTMLFlipBook>
                 </Document>
-            :
+                </div>
+
+                <div style={{opacity: bookSwap ? 0 : 1}}>
                 <Document file={frogPrincePDF}>
-                    <HTMLFlipBook width={width} height={525} ref={bookRef}>
+                    <HTMLFlipBook width={width} height={525} ref={bookRef2}>
                         <Page number={1}>Page text</Page>
                         <Page number={2}>Page text</Page>
                         <Page number={3}>Page text</Page>
@@ -125,6 +134,9 @@ const Book2 = () => {
                         
                     </HTMLFlipBook>
                 </Document>
+                </div>
+                </>
+
             }
             </div>
             <div className='cornerbook' onClick={() => {setBookSwap(!bookSwap)}}></div>

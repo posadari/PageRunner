@@ -1,4 +1,4 @@
-import React, {useState} from 'react'
+import React, {useEffect, useRef, useState} from 'react'
 import HTMLFlipBook from 'react-pageflip';
 import './book.css';
 import { pdfjs, Document, Page as ReactPdfPage } from "react-pdf";
@@ -13,13 +13,28 @@ const width = 400;
 const Book = () => {
     const bookRef = React.useRef()
     const [toggle, setToggle] = useState(true)
+    const loaded = useRef(false)
 
     const leftCutoff = 350;
     const rightCutoff = 1200;
 
     let lookDirection = null;
     let startLookTime = Number.POSITIVE_INFINITY;
+    
+    useEffect(() => {
+        const vid = document.getElementById("webgazerVideoFeed");
+        vid.onloadeddata = function() {
+            // alert("Browser has loaded the current frame");
+            loaded.current = true;
+        };
+        // window.addEventListener('load', (event) => {
+        //     console.log('page is fully loaded');
+        //     loaded.current = true;
+        //   });
 
+    }, [])
+
+    if(loaded){
 
     const webgazer = window.webgazer;
 
@@ -63,6 +78,7 @@ const Book = () => {
         webgazer.showVideoPreview(true).showPredictionPoints(false)
     }
 
+    }
 
     const Page = React.forwardRef((props, ref) => {
         return (
