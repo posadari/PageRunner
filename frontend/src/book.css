@@ -2,27 +2,50 @@
     /* max-width: 95%; */
     /* color: rgb(236, 26, 26); */
     padding: 10px;
-    background-image: url("https://i.pinimg.com/originals/6e/55/7c/6e557c22d0a2840b0f7ca5213f56da0d.jpg");
+    background-image: url("https://img.freepik.com/premium-vector/luxury-ornamental-book-cover-design_118503-608.jpg");
+    background-size: 800px 525px;
+    box-shadow: 5px 5px 20px 3px black;
+    border-radius: 10px;
 }
 
 .leftButton {
-    height: 100vh;
+    /* height: 100vh;
     width: 50px;
     bottom: 0;
     right: 0;
     z-index: 100;
     background-color: royalblue;
     position: absolute;
-    opacity: 20%;
+    opacity: 20%; */
 }
 
 .rightButton {
-    height: 100vh;
+    /* height: 100vh;
     width: 400px;
     bottom: 0;
     left: 0;
     z-index: 100;
     background-color: royalblue;
     position: absolute;
-    opacity: 20%;
+    opacity: 20%; */
 }
+
+.desk {
+    background-image: url('https://i.pinimg.com/originals/fa/cd/23/facd23e2633701a29de2c703fa7ec78f.jpg');
+    position: absolute;
+    /* background-size: 100vh auto; */
+    background-size: cover;
+    /* top: 50%;
+    left: 50%; */
+    z-index: -1;
+    height: 100vh;
+    width: 100vw;
+  }
+
+  .pagetwo {
+    padding: 10px;
+    background-image: url("https://img.freepik.com/premium-vector/luxury-ornamental-book-cover-design_118503-608.jpg");
+    background-size: 800px 525px;
+    box-shadow: 5px 5px 20px 3px black;
+    border-radius: 10px;
+  }

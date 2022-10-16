@@ -2,7 +2,7 @@ import React, {useState} from 'react'
 import HTMLFlipBook from 'react-pageflip';
 import './book.css';
 import { pdfjs, Document, Page as ReactPdfPage } from "react-pdf";
-import frogPrincePDF from "./frogprince.pdf";
+import monkeypaw from "./monkeyspaw.pdf";
 import Calibration from './Calibration'
 
 pdfjs.GlobalWorkerOptions.workerSrc = `//cdnjs.cloudflare.com/ajax/libs/pdf.js/${pdfjs.version}/pdf.worker.js`;
@@ -10,7 +10,7 @@ pdfjs.GlobalWorkerOptions.workerSrc = `//cdnjs.cloudflare.com/ajax/libs/pdf.js/$
 
 const width = 400;
 
-const Book = () => {
+const Book2 = () => {
     const bookRef = React.useRef()
     const [toggle, setToggle] = useState(true)
 
@@ -69,7 +69,7 @@ const Book = () => {
             <div ref={ref}
                 className="page"
                 >
-                <ReactPdfPage pageNumber={props.number} width={width} />
+                <ReactPdfPage pageNumber={props.number} width={width} height={510}/>
             </div>
         );
     });
@@ -81,20 +81,24 @@ const Book = () => {
             <div className='desk'/>
             <div id="turner" className='leftButton' ></div>
             <div id="turner" className='rightButton' ></div>
-            <div id="cover" style={{marginLeft: '30%'}}>
+            <div id="covertwo" style={{marginLeft: '30%'}}>
                 {/* <WebGazer /> */}
                 {/* <div onClick={() => {
                     bookRef.current.pageFlip().flipNext();
                 }}>
                     Turn page
                 </div> */}
-                <Document file={frogPrincePDF}>
-                    <HTMLFlipBook width={width} height={525} ref={bookRef}>
+                <Document file={monkeypaw}>
+                    <HTMLFlipBook width={width} height={560} ref={bookRef} showCover={true}>
                         <Page number={1}>Page text</Page>
                         <Page number={2}>Page text</Page>
                         <Page number={3}>Page text</Page>
                         <Page number={4}>Page text</Page>
-                        
+                        <Page number={5}>Page text</Page>
+                        <Page number={6}>Page text</Page>
+                        <Page number={7}>Page text</Page>
+                        <Page number={8}>Page text</Page>
+                        <Page number={9}>Page text</Page>
                     </HTMLFlipBook>
                 </Document>
             </div>
@@ -108,4 +112,4 @@ const Book = () => {
     )
 }
 
-export default Book;
+export default Book2;

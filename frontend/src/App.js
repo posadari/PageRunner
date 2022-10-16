@@ -5,6 +5,7 @@ import Book from './Book';
 import Read from './ReadFile.js'
 import Click from './Calibration';
 import {useState} from 'react';
+import Book1 from './Book1';
 
 function App() {
   console.log('here')
@@ -15,7 +16,7 @@ function App() {
     
     {/* <button onClick={() => {setToggle(!toggle)}}>Calibrate</button> */}
     {/* <Click/> */}
-      <Book />
+      <Book1 />
       {/* <WebGazer /> */}
       {/* <Read /> */}
     </>
