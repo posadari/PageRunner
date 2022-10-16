@@ -30,8 +30,8 @@ const useStyles = makeStyles((theme) => ({
 
     return (
       <div className="App">
-        <WebGazer />
-        <div style={{alignSelf: 'center'}}> 
+        {/* <WebGazer /> */}
+        <div style={{alignSelf: 'center', marginLeft: '20%'}}> 
             <Grid container spacing={10} className={classes.grid}>
                 <Grid item xs={4}>
                     <div className='buffer'>

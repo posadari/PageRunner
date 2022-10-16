@@ -24,8 +24,8 @@ const Book = () => {
     });
 
     return (
-        <>
-        <WebGazer />
+        <div style={{marginLeft: '50%'}}>
+        {/* <WebGazer /> */}
         <div onClick={() => {
             bookRef.current.pageFlip().flipNext();
         }}>
@@ -40,7 +40,7 @@ const Book = () => {
                 
             </HTMLFlipBook>
         </Document>
-        </>
+        </div>
 
     )
 }

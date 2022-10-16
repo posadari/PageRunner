@@ -4,12 +4,17 @@ import WebGazer from './WebGazer';
 import Book from './Book';
 import Read from './ReadFile.js'
 import Click from './Calibration';
+import {useState} from 'react';
 
 function App() {
   console.log('here')
+  const [toggle, setToggle] = useState(true);
   return (
     <>
-    <Click/>
+      {toggle ? <Click /> : <Book />}
+    
+    <button onClick={() => {setToggle(!toggle)}}>Calibrate</button>
+    {/* <Click/> */}
       {/* <Book /> */}
       {/* <WebGazer /> */}
       {/* <Read /> */}
